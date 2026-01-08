@@ -1,0 +1,22 @@
+version: '2.1'
+
+services:
+  gemini:
+    build: .
+    image: gemini-cli-root
+    # These two options are CRITICAL for interactive terminal tools
+    stdin_open: true # equivalent to -i
+    tty: true        # equivalent to -t
+    environment:
+      # Option A: Use an API Key (Recommended for servers/headless)
+      # Get your key at: https://aistudio.google.com/apikey
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      
+      # Option B: If using Vertex AI, uncomment the following lines:
+      # - GOOGLE_CLOUD_PROJECT=your-project
+      # - GOOGLE_LOCATION=us-central1
+      
+    # Mount a volume to persist configurations or history if necessary
+    volumes:
+      - ${DATA_PATH:-./data}:/app/data
+      - ./gemini-data:/root/.gemini

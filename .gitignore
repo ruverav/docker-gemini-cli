@@ -1,0 +1,9 @@
+# Ignorar credenciales y entorno local
+.env
+
+# Ignorar datos de sesión e historial de Gemini
+gemini-data/
+
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
